@@ -11,6 +11,7 @@ Address_book::Address_book(QWidget *parent)
 
     //connections with view
     connect(this, &Address_book::showContact, ui->contacts_listView, &ContactView::onContactAdded);
+    connect(ui->contacts_listView, &ContactView::contactClicked, this, &Address_book::onContactClicked);
 
     //connections wuth button clicked
     connect(ui->contacts_add_button, &QPushButton::clicked, this, &Address_book::onAddButtonCliecked);
@@ -37,7 +38,7 @@ void Address_book::onAddButtonCliecked()
     ui->phone_edit->clear();
     ui->work_edit->clear();
     ui->info_edit_save_button->setText(SAVE_BUTTON);
-    ui->info_lable->setText("New contact:");
+    ui->info_lable->setText(NEW_C_LABLE);
 }
 
 void Address_book::onSaveEditButtonClicked()
@@ -68,6 +69,21 @@ void Address_book::onSaveEditButtonClicked()
     
 }
 
+void Address_book::onContactClicked(const contactItemPtr contact_data_ptr_)
+{
+    ui->info_widget->show();
+
+    ui->info_lable->setText(INFO_LABLE);
+
+    ui->name_edit->setText(contact_data_ptr_->getContactName());
+    ui->nickname_edit->setText(contact_data_ptr_->getContactNickname());
+    ui->phone_edit->setText(contact_data_ptr_->getContactPhone());
+    ui->work_edit->setText(contact_data_ptr_->getContactWork());
+
+    ui->info_edit_save_button->setText(EDIT_BUTTON);
+
+}
+
 void Address_book::ContactAddedError(const QString& eroor_)
 {
     QMessageBox::warning(this, "Warning", eroor_);
@@ -78,7 +94,7 @@ void Address_book::ContactAdded(const contactItemPtr new_contact_)
     QMessageBox::information(this, "Success", "Contact created successfully!");
     emit showContact(QVariant::fromValue<contactItemPtr>(new_contact_));
     ui->info_edit_save_button->setText(EDIT_BUTTON);
-    ui->info_lable->setText("Contact info:");
+    ui->info_lable->setText(INFO_LABLE);
 }
 
 

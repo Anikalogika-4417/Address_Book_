@@ -66,7 +66,6 @@ void ContactModel::addContact(const QVariant& new_contact_)
     }
 }
 
-
 void ContactModel::addContacts(const QVariantList& new_contacts_list_)
 {
     if (!new_contacts_list_.isEmpty())

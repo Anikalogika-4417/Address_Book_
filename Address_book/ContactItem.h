@@ -42,8 +42,8 @@ public:
 	[[nodiscard]] auto getContactCurrRow() { return contact_current_row; };
 	void setContactCurrRow(int curr_row_) { contact_current_row = curr_row_; };
 
-	[[nodiscard]] auto const& getContactRoomCurrBox() const { return contact_current_box; }
-	auto setContactRoomCurrBox(const QRect val) { contact_current_box = val; }
+	[[nodiscard]] auto const& getContactCurrBox() const { return contact_current_box; }
+	auto setContactCurrBox(const QRect val) { contact_current_box = val; }
 
 private:
 	QString		contact_id{};

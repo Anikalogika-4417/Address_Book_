@@ -27,7 +27,7 @@ private Q_SLOTS:
     //void onDeleteButtonClicked();
     //void onSearchButtonClicked();
 
-    //void onContactClicked();
+    void onContactClicked(const contactItemPtr contact_data_ptr_);
 
     //void newContactCreated();
     //void contactEdited();
@@ -47,5 +47,8 @@ private:
 
     const QString SAVE_BUTTON = "Save";
     const QString EDIT_BUTTON = "Edit";
+
+    const QString INFO_LABLE = "Contact info:";
+    const QString NEW_C_LABLE = "New contact:";
 
 };
