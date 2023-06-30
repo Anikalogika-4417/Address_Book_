@@ -48,13 +48,15 @@ static constexpr auto qt_meta_stringdata_CLASSAddress_bookENDCLASS = QtMocHelper
     "var_",
     "onAddButtonCliecked",
     "onSaveEditButtonClicked",
+    "onContactClicked",
+    "contact_data_ptr_",
     "ContactAddedError",
     "eroor_",
     "ContactAdded"
 );
 #else  // !QT_MOC_HAS_STRING_DATA
 struct qt_meta_stringdata_CLASSAddress_bookENDCLASS_t {
-    uint offsetsAndSizes[24];
+    uint offsetsAndSizes[28];
     char stringdata0[13];
     char stringdata1[11];
     char stringdata2[1];
@@ -64,9 +66,11 @@ struct qt_meta_stringdata_CLASSAddress_bookENDCLASS_t {
     char stringdata6[5];
     char stringdata7[20];
     char stringdata8[24];
-    char stringdata9[18];
-    char stringdata10[7];
-    char stringdata11[13];
+    char stringdata9[17];
+    char stringdata10[18];
+    char stringdata11[18];
+    char stringdata12[7];
+    char stringdata13[13];
 };
 #define QT_MOC_LITERAL(ofs, len) \
     uint(sizeof(qt_meta_stringdata_CLASSAddress_bookENDCLASS_t::offsetsAndSizes) + ofs), len 
@@ -81,9 +85,11 @@ Q_CONSTINIT static const qt_meta_stringdata_CLASSAddress_bookENDCLASS_t qt_meta_
         QT_MOC_LITERAL(65, 4),  // "var_"
         QT_MOC_LITERAL(70, 19),  // "onAddButtonCliecked"
         QT_MOC_LITERAL(90, 23),  // "onSaveEditButtonClicked"
-        QT_MOC_LITERAL(114, 17),  // "ContactAddedError"
-        QT_MOC_LITERAL(132, 6),  // "eroor_"
-        QT_MOC_LITERAL(139, 12)   // "ContactAdded"
+        QT_MOC_LITERAL(114, 16),  // "onContactClicked"
+        QT_MOC_LITERAL(131, 17),  // "contact_data_ptr_"
+        QT_MOC_LITERAL(149, 17),  // "ContactAddedError"
+        QT_MOC_LITERAL(167, 6),  // "eroor_"
+        QT_MOC_LITERAL(174, 12)   // "ContactAdded"
     },
     "Address_book",
     "newContact",
@@ -94,6 +100,8 @@ Q_CONSTINIT static const qt_meta_stringdata_CLASSAddress_bookENDCLASS_t qt_meta_
     "var_",
     "onAddButtonCliecked",
     "onSaveEditButtonClicked",
+    "onContactClicked",
+    "contact_data_ptr_",
     "ContactAddedError",
     "eroor_",
     "ContactAdded"
@@ -108,7 +116,7 @@ Q_CONSTINIT static const uint qt_meta_data_CLASSAddress_bookENDCLASS[] = {
       11,       // revision
        0,       // classname
        0,    0, // classinfo
-       6,   14, // methods
+       7,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -116,14 +124,15 @@ Q_CONSTINIT static const uint qt_meta_data_CLASSAddress_bookENDCLASS[] = {
        2,       // signalCount
 
  // signals: name, argc, parameters, tag, flags, initial metatype offsets
-       1,    1,   50,    2, 0x06,    1 /* Public */,
-       5,    1,   53,    2, 0x06,    3 /* Public */,
+       1,    1,   56,    2, 0x06,    1 /* Public */,
+       5,    1,   59,    2, 0x06,    3 /* Public */,
 
  // slots: name, argc, parameters, tag, flags, initial metatype offsets
-       7,    0,   56,    2, 0x08,    5 /* Private */,
-       8,    0,   57,    2, 0x08,    6 /* Private */,
-       9,    1,   58,    2, 0x08,    7 /* Private */,
-      11,    1,   61,    2, 0x08,    9 /* Private */,
+       7,    0,   62,    2, 0x08,    5 /* Private */,
+       8,    0,   63,    2, 0x08,    6 /* Private */,
+       9,    1,   64,    2, 0x08,    7 /* Private */,
+      11,    1,   67,    2, 0x08,    9 /* Private */,
+      13,    1,   70,    2, 0x08,   11 /* Private */,
 
  // signals: parameters
     QMetaType::Void, 0x80000000 | 3,    4,
@@ -132,7 +141,8 @@ Q_CONSTINIT static const uint qt_meta_data_CLASSAddress_bookENDCLASS[] = {
  // slots: parameters
     QMetaType::Void,
     QMetaType::Void,
-    QMetaType::Void, QMetaType::QString,   10,
+    QMetaType::Void, 0x80000000 | 3,   10,
+    QMetaType::Void, QMetaType::QString,   12,
     QMetaType::Void, 0x80000000 | 3,    4,
 
        0        // eod
@@ -157,6 +167,9 @@ Q_CONSTINIT const QMetaObject Address_book::staticMetaObject = { {
         QtPrivate::TypeAndForceComplete<void, std::false_type>,
         // method 'onSaveEditButtonClicked'
         QtPrivate::TypeAndForceComplete<void, std::false_type>,
+        // method 'onContactClicked'
+        QtPrivate::TypeAndForceComplete<void, std::false_type>,
+        QtPrivate::TypeAndForceComplete<const contactItemPtr, std::false_type>,
         // method 'ContactAddedError'
         QtPrivate::TypeAndForceComplete<void, std::false_type>,
         QtPrivate::TypeAndForceComplete<const QString &, std::false_type>,
@@ -177,8 +190,9 @@ void Address_book::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id
         case 1: _t->showContact((*reinterpret_cast< std::add_pointer_t<QVariant>>(_a[1]))); break;
         case 2: _t->onAddButtonCliecked(); break;
         case 3: _t->onSaveEditButtonClicked(); break;
-        case 4: _t->ContactAddedError((*reinterpret_cast< std::add_pointer_t<QString>>(_a[1]))); break;
-        case 5: _t->ContactAdded((*reinterpret_cast< std::add_pointer_t<contactItemPtr>>(_a[1]))); break;
+        case 4: _t->onContactClicked((*reinterpret_cast< std::add_pointer_t<contactItemPtr>>(_a[1]))); break;
+        case 5: _t->ContactAddedError((*reinterpret_cast< std::add_pointer_t<QString>>(_a[1]))); break;
+        case 6: _t->ContactAdded((*reinterpret_cast< std::add_pointer_t<contactItemPtr>>(_a[1]))); break;
         default: ;
         }
     } else if (_c == QMetaObject::IndexOfMethod) {
@@ -219,13 +233,13 @@ int Address_book::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 6)
+        if (_id < 7)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 6;
+        _id -= 7;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 6)
+        if (_id < 7)
             *reinterpret_cast<QMetaType *>(_a[0]) = QMetaType();
-        _id -= 6;
+        _id -= 7;
     }
     return _id;
 }

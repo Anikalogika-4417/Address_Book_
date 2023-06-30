@@ -14,7 +14,7 @@ QSize ContactDelegate::sizeHint(QStyleOptionViewItem const& option, QModelIndex 
 	const auto& chat = index.data(ContactModel::ContactRole).value<contactItemPtr>();
 
 	const int added_height = 10 * 2;
-	const QFontMetrics fm{ {"Titilium Web", 14, QFont::Normal} };
+	const QFontMetrics fm{ Font::NORMAL };
 	return { option.rect.width(), fm.height() + added_height };
 }
 
@@ -27,6 +27,7 @@ void ContactDelegate::paint(QPainter* painter, const QStyleOptionViewItem& optio
 	const auto& draw_name = [&]()
 	{
 		painter->drawText(whole_rect, Qt::AlignLeft | Qt::AlignVCenter, contact->getContactName());
+		contact->setContactCurrBox(whole_rect);
 	};
 
 	draw_name();

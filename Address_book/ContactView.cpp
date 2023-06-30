@@ -85,7 +85,7 @@ void ContactView::mouseDoubleClickEvent(QMouseEvent* event)
 		if (item_index.isValid())
 		{
 			const auto& contact = item_index.data(ContactModel::ContactRole).value<contactItemPtr>();
-			const auto& contact_rects = contact->getContactRoomCurrBox();
+			const auto& contact_rects = contact->getContactCurrBox();
 			if (contact_rects.contains(event->pos()))
 			{
 				Q_EMIT contactClicked(contact);

@@ -6,6 +6,7 @@
 
 #include "ContactModel.h"
 #include "ContactItem.h"
+#include "Style.h"
 
 
 class ContactItem;
