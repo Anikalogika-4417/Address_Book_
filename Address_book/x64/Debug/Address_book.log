@@ -1,0 +1,8 @@
+﻿  moc Helper.h
+  ContactDelegate.cpp
+  Helper.cpp
+  address_book.cpp
+  main.cpp
+  moc_Helper.cpp
+  moc_address_book.cpp
+  Address_book.vcxproj -> D:\Programming\Address_book\x64\Debug\Address_book.exe
