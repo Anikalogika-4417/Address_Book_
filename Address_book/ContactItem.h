@@ -12,14 +12,28 @@ public:
 	ContactItem(
 		QString	contact_name_,
 		QString	contact_nickname_,
-		QString	contact_phone,
-		QString	contact_work) : QObject(nullptr),
+		QString	contact_phone_,
+		QString	contact_work_) : QObject(nullptr),
 		contact_name(std::move(contact_name_)),
 		contact_nickname(std::move(contact_nickname_)),
-		contact_phone(std::move(contact_phone)),
-		contact_work(std::move(contact_work))
+		contact_phone(std::move(contact_phone_)),
+		contact_work(std::move(contact_work_))
 	{
 		contact_id = QUuid::createUuid().toString();
+	};
+
+	ContactItem(
+		QString contact_id_,
+		QString	contact_name_,
+		QString	contact_nickname_,
+		QString	contact_phone_,
+		QString	contact_work_) : QObject(nullptr),
+		contact_id(std::move(contact_id_)),
+		contact_name(std::move(contact_name_)),
+		contact_nickname(std::move(contact_nickname_)),
+		contact_phone(std::move(contact_phone_)),
+		contact_work(std::move(contact_work_))
+	{
 	};
 
 	[[nodiscard]] auto getContactId() { return contact_id; };
@@ -59,3 +73,4 @@ private:
 
 using contactItemPtr = QSharedPointer<ContactItem>;
 using contactList = QList<contactItemPtr>;
+using contactListPtr = QSharedPointer<contactList>;

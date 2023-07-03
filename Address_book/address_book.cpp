@@ -9,8 +9,10 @@ Address_book::Address_book(QWidget *parent)
     //Before starting - no data on right side
     ui->info_widget->hide();
 
+
     //connections with view
     connect(this, &Address_book::showContact, ui->contacts_listView, &ContactView::onContactAdded);
+    connect(this, &Address_book::showContacts, ui->contacts_listView, &ContactView::onContactsAdded);
     connect(ui->contacts_listView, &ContactView::contactClicked, this, &Address_book::onContactClicked);
 
     //connections wuth button clicked
@@ -22,7 +24,9 @@ Address_book::Address_book(QWidget *parent)
 
     connect(helper.data(), &Helper::FileEroor, this, &Address_book::ContactAddedError);
     connect(helper.data(), &Helper::ContactAdded, this, &Address_book::ContactAdded);
+    connect(helper.data(), &Helper::LinesUploaded, this, &Address_book::ContactsAdded);
 
+    Helper::instance()->DownloadLines();
 }
 
 Address_book::~Address_book()
@@ -95,6 +99,19 @@ void Address_book::ContactAdded(const contactItemPtr new_contact_)
     emit showContact(QVariant::fromValue<contactItemPtr>(new_contact_));
     ui->info_edit_save_button->setText(EDIT_BUTTON);
     ui->info_lable->setText(INFO_LABLE);
+}
+
+void Address_book::ContactsAdded(const contactListPtr all_contacts_)
+{
+    QVariantList var_list;
+    for (const contactItemPtr contact_item : *all_contacts_) {
+        auto a = contact_item->getContactName();
+        var_list.emplaceBack(
+            QVariant::fromValue<contactItemPtr>
+            (contact_item)
+        );
+    }
+    emit showContacts(var_list);
 }
 
 

@@ -6,6 +6,8 @@ Helper::Helper() :
 }
 
 QSharedPointer<Helper> Helper::helpPtr = nullptr;
+contactListPtr Helper::data = nullptr;
+
 
 QSharedPointer<Helper> Helper::instance()
 {
@@ -15,6 +17,7 @@ QSharedPointer<Helper> Helper::instance()
     }
     return helpPtr;
 }
+
 
 void Helper::AddLine(const contactItemPtr new_contact_)
 {
@@ -63,6 +66,54 @@ void Helper::AddLine(const contactItemPtr new_contact_)
         emit FileEroor("Not all fileds filled!!!");
         return;
     }
+}
+
+void Helper::DownloadLines()
+{
+    if (file.open(QIODevice::ReadOnly))
+    {
+        QByteArray jsonData = file.readAll();
+        QJsonDocument jsonDoc = QJsonDocument::fromJson(jsonData);
+        if (!jsonDoc.isNull())
+        {
+            if (jsonDoc.isObject())
+            {
+                QJsonObject rootObject = jsonDoc.object();
+                for (int i = 0; i < rootObject.size();i++){
+                    QJsonObject jsonObject = rootObject.value(rootObject.keys().at(0)).toObject();
+
+                    contactItemPtr contact{ new ContactItem(
+                        rootObject.value(jsonObject.keys().at(0)).toString(),
+                        jsonObject.value("name").toString(),
+                        jsonObject.value("nickname").toString(),
+                        jsonObject.value("phone").toString(),
+                        jsonObject.value("work").toString()
+                    ) };
+                    list.push_back(contact);
+                }
+            }
+            else
+            {
+                emit FileEroor("No data (JSON)");
+                return;
+            }
+        }
+        else
+        {
+            emit FileEroor("Mistake!\nTry it later...");
+            return;
+        }
+        file.close();
+    }
+    else
+    {
+        emit FileEroor("Mistake!\nNo data");
+        return;
+    }
+    
+    data = QSharedPointer<contactList>::create(contactList(list));
+    emit LinesUploaded(data);
+    
 }
 
 contactItemPtr Helper::ReadLine(const QString&)
