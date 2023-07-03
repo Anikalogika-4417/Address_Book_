@@ -6,14 +6,21 @@ ContactView::ContactView(QWidget* parent)
 	//TODO create font
 	//setFont(CHAT_FONT);
 
-	QTimer::singleShot(100, [this]
+	const auto model = new ContactModel(this);
+	setModel(model);
+	setItemDelegate(new ContactDelegate(this));
+	connect(model, &ContactModel::rowsInserted, this, &ContactView::onRowsInserted);
+	/*QTimer::singleShot(100, [this]
 		{
 			const auto model = new ContactModel(this);
 			setModel(model);
 			setItemDelegate(new ContactDelegate(this));
 			connect(model, &ContactModel::rowsInserted, this, &ContactView::onRowsInserted);
 		}
-	);
+	);*/
+
+	//TODO Why Timer was need?
+
 	// important !!!
 	setResizeMode(Adjust);
 

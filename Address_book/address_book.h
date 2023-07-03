@@ -36,9 +36,12 @@ private Q_SLOTS:
     void ContactAddedError(const QString& eroor_);
     void ContactAdded(const contactItemPtr new_contact_);
 
+    void ContactsAdded(const contactListPtr all_contacts_);
+
 Q_SIGNALS:
     void newContact(const contactItemPtr new_contact_);
     void showContact(const QVariant& var_);
+    void showContacts(const QVariantList& var_list_);
 
 
 private:

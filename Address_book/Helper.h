@@ -16,15 +16,21 @@ public:
 
 public Q_SLOTS:
 	void AddLine(const contactItemPtr);
+	void DownloadLines();
 	contactItemPtr ReadLine(const QString&);
 	contactItemPtr DeleteFile(const QString&);
 Q_SIGNALS:
 	void FileEroor(const QString& error_);
 	void ContactAdded(const contactItemPtr new_contact_);
+	void LinesUploaded(const contactListPtr contact_list_);
+
 private:
 	Helper();
 
 	QFile file;
 	static QSharedPointer<Helper> helpPtr;
+
+	contactList list{};
+	static contactListPtr data;
 };
 

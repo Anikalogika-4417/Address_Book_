@@ -1,8 +1,20 @@
 {
+    "{06b8a8e8-4198-4637-b1f3-e13715ec6efc}": {
+        "name": "efef",
+        "nickname": "",
+        "phone": "effe",
+        "work": ""
+    },
     "{0ba74ad7-7ddd-4d2c-b219-f611ca12cff4}": {
         "name": "Anna",
         "nickname": "Nuta",
         "phone": "0544616462",
+        "work": ""
+    },
+    "{1dc5727b-2186-445c-a429-4fdd45fa7f04}": {
+        "name": "Zas",
+        "nickname": "",
+        "phone": "567890",
         "work": ""
     },
     "{3c350d9d-d8b4-4094-becf-f41974aed13d}": {
@@ -17,6 +29,12 @@
         "phone": "wrf",
         "work": ""
     },
+    "{4a13539e-a3bc-4791-be96-cfbc0c327611}": {
+        "name": "Sapir",
+        "nickname": "",
+        "phone": "345678",
+        "work": ""
+    },
     "{83b3ccaa-4cac-484c-ba52-b87bba9b0727}": {
         "name": "Anna",
         "nickname": "Nuta",
@@ -29,6 +47,12 @@
         "phone": "kbjdg",
         "work": ""
     },
+    "{8655493b-4a69-40b3-a303-0b6582f85a5e}": {
+        "name": "dfghm,",
+        "nickname": "rthj",
+        "phone": "dfgn",
+        "work": "DFG"
+    },
     "{bb0ef5ac-9c8c-4dd2-8a5b-e4c5af3db831}": {
         "name": "Anna",
         "nickname": "Nuta",
@@ -40,5 +64,11 @@
         "nickname": "sfv",
         "phone": "wrf",
         "work": "sf"
+    },
+    "{e87e9e76-6e1d-4ee2-8a6e-a64e3149fc9e}": {
+        "name": "RTGHJ",
+        "nickname": "TYI",
+        "phone": "TYHJ",
+        "work": "THJ"
     }
 }

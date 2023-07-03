@@ -1,14 +1,2 @@
-﻿  moc ContactItem.h
-  ContactDelegate.cpp
-  ContactModel.cpp
-  ContactView.cpp
-  Helper.cpp
-  address_book.cpp
-  main.cpp
-  moc_ContactDelegate.cpp
-  moc_ContactItem.cpp
-  moc_ContactModel.cpp
-  moc_ContactView.cpp
-  moc_Helper.cpp
-  moc_address_book.cpp
+﻿  Helper.cpp
   Address_book.vcxproj -> D:\Programming\ForGit\Address_Book_\x64\Debug\Address_book.exe
