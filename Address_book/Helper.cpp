@@ -80,7 +80,8 @@ void Helper::DownloadLines()
             {
                 QJsonObject rootObject = jsonDoc.object();
                 for (int i = 0; i < rootObject.size();i++){
-                    QJsonObject jsonObject = rootObject.value(rootObject.keys().at(0)).toObject();
+                    QJsonObject jsonObject = rootObject.value(rootObject.keys().at(i)).toObject();
+                    auto a = jsonObject.value("name").toString();
 
                     contactItemPtr contact{ new ContactItem(
                         rootObject.value(jsonObject.keys().at(0)).toString(),

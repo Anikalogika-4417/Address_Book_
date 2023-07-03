@@ -95,8 +95,9 @@ void Address_book::ContactAddedError(const QString& eroor_)
 
 void Address_book::ContactAdded(const contactItemPtr new_contact_)
 {
-    QMessageBox::information(this, "Success", "Contact created successfully!");
+    auto a = QVariant::fromValue<contactItemPtr>(new_contact_);
     emit showContact(QVariant::fromValue<contactItemPtr>(new_contact_));
+    QMessageBox::information(this, "Success", "Contact created successfully!");
     ui->info_edit_save_button->setText(EDIT_BUTTON);
     ui->info_lable->setText(INFO_LABLE);
 }
