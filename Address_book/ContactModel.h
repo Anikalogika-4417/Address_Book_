@@ -46,6 +46,8 @@ public:
 	void addContact(const QVariant& new_contact_);
 	void addContacts(const QVariantList& new_contacts_list_);
 
+	void deleteContact(const QVariant& delete_contact_);
+
 private Q_SLOTS:
 	void clear();
 

@@ -79,12 +79,13 @@ void Helper::DownloadLines()
             if (jsonDoc.isObject())
             {
                 QJsonObject rootObject = jsonDoc.object();
-                for (int i = 0; i < rootObject.size();i++){
+                auto b = rootObject.size();
+                for (int i = 0; i < rootObject.size();i++) {
                     QJsonObject jsonObject = rootObject.value(rootObject.keys().at(i)).toObject();
-                    auto a = jsonObject.value("name").toString();
 
+                    auto key = rootObject.keys().at(i);
                     contactItemPtr contact{ new ContactItem(
-                        rootObject.value(jsonObject.keys().at(0)).toString(),
+                        key,
                         jsonObject.value("name").toString(),
                         jsonObject.value("nickname").toString(),
                         jsonObject.value("phone").toString(),
@@ -122,7 +123,45 @@ contactItemPtr Helper::ReadLine(const QString&)
     return contactItemPtr();
 }
 
-contactItemPtr Helper::DeleteFile(const QString&)
+void Helper::DeleteLine(const contactItemPtr delete_contact_)
 {
-	return contactItemPtr();
+
+    if (file.open(QIODevice::ReadWrite | QIODevice::Text))
+    {
+        QByteArray jsonData = file.readAll();
+        QJsonDocument jsonDoc = QJsonDocument::fromJson(jsonData);
+
+        if (!jsonDoc.isNull() && jsonDoc.isObject()) {
+            QJsonObject rootObject = jsonDoc.object();
+            for (int i = 0; i < rootObject.size(); i++) {
+                auto key = rootObject.keys().at(i);
+
+                if (key.trimmed() == delete_contact_->getContactId().trimmed()) {
+                    rootObject.remove(rootObject.keys().at(i));
+                    jsonDoc.setObject(rootObject);
+                    
+                    file.seek(0);
+                    file.write(jsonDoc.toJson());
+                    file.resize(file.pos());
+                    file.close();
+                    emit LineDeleted("Contact deleted successfuly");
+                    return;
+                }
+            }
+            file.close();
+            emit FileEroor("No data for delete");
+            return;
+        }
+        else
+        {
+            file.close();
+            emit FileEroor("Nothing to delete");
+            return;
+        }
+    }
+    else
+    {
+        emit FileEroor("Failed to open data");
+        return;
+    }
 }

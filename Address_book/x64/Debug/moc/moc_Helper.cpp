@@ -48,14 +48,16 @@ static constexpr auto qt_meta_stringdata_CLASSHelperENDCLASS = QtMocHelpers::str
     "LinesUploaded",
     "contactListPtr",
     "contact_list_",
+    "LineDeleted",
+    "message_",
     "AddLine",
     "DownloadLines",
     "ReadLine",
-    "DeleteFile"
+    "DeleteLine"
 );
 #else  // !QT_MOC_HAS_STRING_DATA
 struct qt_meta_stringdata_CLASSHelperENDCLASS_t {
-    uint offsetsAndSizes[28];
+    uint offsetsAndSizes[32];
     char stringdata0[7];
     char stringdata1[10];
     char stringdata2[1];
@@ -66,10 +68,12 @@ struct qt_meta_stringdata_CLASSHelperENDCLASS_t {
     char stringdata7[14];
     char stringdata8[15];
     char stringdata9[14];
-    char stringdata10[8];
-    char stringdata11[14];
-    char stringdata12[9];
-    char stringdata13[11];
+    char stringdata10[12];
+    char stringdata11[9];
+    char stringdata12[8];
+    char stringdata13[14];
+    char stringdata14[9];
+    char stringdata15[11];
 };
 #define QT_MOC_LITERAL(ofs, len) \
     uint(sizeof(qt_meta_stringdata_CLASSHelperENDCLASS_t::offsetsAndSizes) + ofs), len 
@@ -85,10 +89,12 @@ Q_CONSTINIT static const qt_meta_stringdata_CLASSHelperENDCLASS_t qt_meta_string
         QT_MOC_LITERAL(66, 13),  // "LinesUploaded"
         QT_MOC_LITERAL(80, 14),  // "contactListPtr"
         QT_MOC_LITERAL(95, 13),  // "contact_list_"
-        QT_MOC_LITERAL(109, 7),  // "AddLine"
-        QT_MOC_LITERAL(117, 13),  // "DownloadLines"
-        QT_MOC_LITERAL(131, 8),  // "ReadLine"
-        QT_MOC_LITERAL(140, 10)   // "DeleteFile"
+        QT_MOC_LITERAL(109, 11),  // "LineDeleted"
+        QT_MOC_LITERAL(121, 8),  // "message_"
+        QT_MOC_LITERAL(130, 7),  // "AddLine"
+        QT_MOC_LITERAL(138, 13),  // "DownloadLines"
+        QT_MOC_LITERAL(152, 8),  // "ReadLine"
+        QT_MOC_LITERAL(161, 10)   // "DeleteLine"
     },
     "Helper",
     "FileEroor",
@@ -100,10 +106,12 @@ Q_CONSTINIT static const qt_meta_stringdata_CLASSHelperENDCLASS_t qt_meta_string
     "LinesUploaded",
     "contactListPtr",
     "contact_list_",
+    "LineDeleted",
+    "message_",
     "AddLine",
     "DownloadLines",
     "ReadLine",
-    "DeleteFile"
+    "DeleteLine"
 };
 #undef QT_MOC_LITERAL
 #endif // !QT_MOC_HAS_STRING_DATA
@@ -115,34 +123,36 @@ Q_CONSTINIT static const uint qt_meta_data_CLASSHelperENDCLASS[] = {
       11,       // revision
        0,       // classname
        0,    0, // classinfo
-       7,   14, // methods
+       8,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
        0,       // flags
-       3,       // signalCount
+       4,       // signalCount
 
  // signals: name, argc, parameters, tag, flags, initial metatype offsets
-       1,    1,   56,    2, 0x06,    1 /* Public */,
-       4,    1,   59,    2, 0x06,    3 /* Public */,
-       7,    1,   62,    2, 0x06,    5 /* Public */,
+       1,    1,   62,    2, 0x06,    1 /* Public */,
+       4,    1,   65,    2, 0x06,    3 /* Public */,
+       7,    1,   68,    2, 0x06,    5 /* Public */,
+      10,    1,   71,    2, 0x06,    7 /* Public */,
 
  // slots: name, argc, parameters, tag, flags, initial metatype offsets
-      10,    1,   65,    2, 0x0a,    7 /* Public */,
-      11,    0,   68,    2, 0x0a,    9 /* Public */,
-      12,    1,   69,    2, 0x0a,   10 /* Public */,
-      13,    1,   72,    2, 0x0a,   12 /* Public */,
+      12,    1,   74,    2, 0x0a,    9 /* Public */,
+      13,    0,   77,    2, 0x0a,   11 /* Public */,
+      14,    1,   78,    2, 0x0a,   12 /* Public */,
+      15,    1,   81,    2, 0x0a,   14 /* Public */,
 
  // signals: parameters
     QMetaType::Void, QMetaType::QString,    3,
     QMetaType::Void, 0x80000000 | 5,    6,
     QMetaType::Void, 0x80000000 | 8,    9,
+    QMetaType::Void, QMetaType::QString,   11,
 
  // slots: parameters
     QMetaType::Void, 0x80000000 | 5,    2,
     QMetaType::Void,
     0x80000000 | 5, QMetaType::QString,    2,
-    0x80000000 | 5, QMetaType::QString,    2,
+    QMetaType::Void, 0x80000000 | 5,    2,
 
        0        // eod
 };
@@ -165,6 +175,9 @@ Q_CONSTINIT const QMetaObject Helper::staticMetaObject = { {
         // method 'LinesUploaded'
         QtPrivate::TypeAndForceComplete<void, std::false_type>,
         QtPrivate::TypeAndForceComplete<const contactListPtr, std::false_type>,
+        // method 'LineDeleted'
+        QtPrivate::TypeAndForceComplete<void, std::false_type>,
+        QtPrivate::TypeAndForceComplete<const QString &, std::false_type>,
         // method 'AddLine'
         QtPrivate::TypeAndForceComplete<void, std::false_type>,
         QtPrivate::TypeAndForceComplete<const contactItemPtr, std::false_type>,
@@ -173,9 +186,9 @@ Q_CONSTINIT const QMetaObject Helper::staticMetaObject = { {
         // method 'ReadLine'
         QtPrivate::TypeAndForceComplete<contactItemPtr, std::false_type>,
         QtPrivate::TypeAndForceComplete<const QString &, std::false_type>,
-        // method 'DeleteFile'
-        QtPrivate::TypeAndForceComplete<contactItemPtr, std::false_type>,
-        QtPrivate::TypeAndForceComplete<const QString &, std::false_type>
+        // method 'DeleteLine'
+        QtPrivate::TypeAndForceComplete<void, std::false_type>,
+        QtPrivate::TypeAndForceComplete<const contactItemPtr, std::false_type>
     >,
     nullptr
 } };
@@ -189,12 +202,12 @@ void Helper::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void
         case 0: _t->FileEroor((*reinterpret_cast< std::add_pointer_t<QString>>(_a[1]))); break;
         case 1: _t->ContactAdded((*reinterpret_cast< std::add_pointer_t<contactItemPtr>>(_a[1]))); break;
         case 2: _t->LinesUploaded((*reinterpret_cast< std::add_pointer_t<contactListPtr>>(_a[1]))); break;
-        case 3: _t->AddLine((*reinterpret_cast< std::add_pointer_t<contactItemPtr>>(_a[1]))); break;
-        case 4: _t->DownloadLines(); break;
-        case 5: { contactItemPtr _r = _t->ReadLine((*reinterpret_cast< std::add_pointer_t<QString>>(_a[1])));
+        case 3: _t->LineDeleted((*reinterpret_cast< std::add_pointer_t<QString>>(_a[1]))); break;
+        case 4: _t->AddLine((*reinterpret_cast< std::add_pointer_t<contactItemPtr>>(_a[1]))); break;
+        case 5: _t->DownloadLines(); break;
+        case 6: { contactItemPtr _r = _t->ReadLine((*reinterpret_cast< std::add_pointer_t<QString>>(_a[1])));
             if (_a[0]) *reinterpret_cast< contactItemPtr*>(_a[0]) = std::move(_r); }  break;
-        case 6: { contactItemPtr _r = _t->DeleteFile((*reinterpret_cast< std::add_pointer_t<QString>>(_a[1])));
-            if (_a[0]) *reinterpret_cast< contactItemPtr*>(_a[0]) = std::move(_r); }  break;
+        case 7: _t->DeleteLine((*reinterpret_cast< std::add_pointer_t<contactItemPtr>>(_a[1]))); break;
         default: ;
         }
     } else if (_c == QMetaObject::IndexOfMethod) {
@@ -220,6 +233,13 @@ void Helper::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void
                 return;
             }
         }
+        {
+            using _t = void (Helper::*)(const QString & );
+            if (_t _q_method = &Helper::LineDeleted; *reinterpret_cast<_t *>(_a[1]) == _q_method) {
+                *result = 3;
+                return;
+            }
+        }
     }
 }
 
@@ -242,13 +262,13 @@ int Helper::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 7)
+        if (_id < 8)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 7;
+        _id -= 8;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 7)
+        if (_id < 8)
             *reinterpret_cast<QMetaType *>(_a[0]) = QMetaType();
-        _id -= 7;
+        _id -= 8;
     }
     return _id;
 }
@@ -272,5 +292,12 @@ void Helper::LinesUploaded(const contactListPtr _t1)
 {
     void *_a[] = { nullptr, const_cast<void*>(reinterpret_cast<const void*>(std::addressof(_t1))) };
     QMetaObject::activate(this, &staticMetaObject, 2, _a);
+}
+
+// SIGNAL 3
+void Helper::LineDeleted(const QString & _t1)
+{
+    void *_a[] = { nullptr, const_cast<void*>(reinterpret_cast<const void*>(std::addressof(_t1))) };
+    QMetaObject::activate(this, &staticMetaObject, 3, _a);
 }
 QT_WARNING_POP

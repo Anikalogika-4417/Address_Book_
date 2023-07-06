@@ -50,6 +50,14 @@ void ContactView::onContactsAdded(const QVariantList& contacts_list_) const
 	model->addContacts(contacts_list_);
 }
 
+void ContactView::onContactDeleted(const QVariant& contact_delete_) const
+{
+	const auto model = qobject_cast<ContactModel*>(this->model());
+	if (!model)
+		return;
+	model->deleteContact(contact_delete_);
+}
+
 void ContactView::onRowsInserted(const QModelIndex& parent, int first, int last)
 {
 	ensurePolished();
