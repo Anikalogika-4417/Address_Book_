@@ -24,7 +24,7 @@ public:
 private Q_SLOTS:
     void onAddButtonCliecked();
     void onSaveEditButtonClicked();
-    //void onDeleteButtonClicked();
+    void onDeleteButtonClicked();
     //void onSearchButtonClicked();
 
     void onContactClicked(const contactItemPtr contact_data_ptr_);
@@ -37,16 +37,20 @@ private Q_SLOTS:
     void ContactAdded(const contactItemPtr new_contact_);
 
     void ContactsAdded(const contactListPtr all_contacts_);
+    void ContactDeleteded(const QString& mess_);
 
 Q_SIGNALS:
     void newContact(const contactItemPtr new_contact_);
+    void deleteLine(const contactItemPtr delete_item_);
     void showContact(const QVariant& var_);
     void showContacts(const QVariantList& var_list_);
+    void delViewContact(const QVariant& var_del_);
 
 
 private:
     Ui::Address_bookClass *ui;
     QSharedPointer<Helper> helper;
+    contactItemPtr current_contact;
 
     const QString SAVE_BUTTON = "Save";
     const QString EDIT_BUTTON = "Edit";

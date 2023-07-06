@@ -81,3 +81,13 @@ void ContactModel::addContacts(const QVariantList& new_contacts_list_)
         endInsertRows();
     }
 }
+
+void ContactModel::deleteContact(const QVariant& delete_contact_)
+{
+    if (const auto contact = delete_contact_.value<contactItemPtr>(); contact)
+    {
+        beginInsertRows(QModelIndex(), static_cast<int>(model_contacts.size()), static_cast<int>(model_contacts.size()));
+        model_contacts.remove(model_contacts.indexOf(contact));
+        endInsertRows();
+    }
+}

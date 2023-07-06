@@ -18,11 +18,12 @@ public Q_SLOTS:
 	void AddLine(const contactItemPtr);
 	void DownloadLines();
 	contactItemPtr ReadLine(const QString&);
-	contactItemPtr DeleteFile(const QString&);
+	void DeleteLine(const contactItemPtr);
 Q_SIGNALS:
 	void FileEroor(const QString& error_);
 	void ContactAdded(const contactItemPtr new_contact_);
 	void LinesUploaded(const contactListPtr contact_list_);
+	void LineDeleted(const QString& message_);
 
 private:
 	Helper();
