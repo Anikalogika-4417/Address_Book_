@@ -134,9 +134,7 @@ void Helper::DeleteLine(const contactItemPtr delete_contact_)
         if (!jsonDoc.isNull() && jsonDoc.isObject()) {
             QJsonObject rootObject = jsonDoc.object();
             for (int i = 0; i < rootObject.size(); i++) {
-                auto key = rootObject.keys().at(i);
-
-                if (key.trimmed() == delete_contact_->getContactId().trimmed()) {
+                if (rootObject.keys().at(i).trimmed() == delete_contact_->getContactId().trimmed()) {
                     rootObject.remove(rootObject.keys().at(i));
                     jsonDoc.setObject(rootObject);
                     
@@ -161,6 +159,60 @@ void Helper::DeleteLine(const contactItemPtr delete_contact_)
     }
     else
     {
+        emit FileEroor("Failed to open data");
+        return;
+    }
+}
+
+void Helper::UpdateLine(const contactItemPtr update_contact_)
+{
+    if (file.open(QIODevice::ReadWrite | QIODevice::Text))
+    {
+        QByteArray jsonData = file.readAll();
+        QJsonDocument jsonDoc = QJsonDocument::fromJson(jsonData);
+
+        if (!jsonDoc.isNull() && jsonDoc.isObject()) {
+            QJsonObject rootObject = jsonDoc.object();
+            QString updateContactId = update_contact_->getContactId().trimmed();
+
+            // Check if the contact to update exists
+            if (rootObject.contains(updateContactId) && rootObject.value(updateContactId).isObject()) {
+                QJsonObject contactObject = rootObject.value(updateContactId).toObject();
+
+                // Update the properties of the contact object
+                contactObject["name"] = update_contact_->getContactName();
+                contactObject["nickname"] = update_contact_->getContactNickname();
+                contactObject["phone"] = update_contact_->getContactPhone();
+                contactObject["work"] = update_contact_->getContactWork();
+
+                // Replace the updated contact object within the root object
+                rootObject[updateContactId] = contactObject;
+
+                jsonDoc.setObject(rootObject);
+
+                // Overwrite the file with the modified JSON document
+                file.seek(0);
+                file.write(jsonDoc.toJson());
+                file.resize(file.pos());
+
+                file.close();
+                emit LineUpdated(update_contact_);
+                return;
+            }
+            else {
+                emit FileEroor("Contact does not exist");
+                return;
+            }
+        }
+        else {
+            qDebug() << "Invalid JSON document or not an object";
+        }
+
+        file.close();
+        emit FileEroor("Failed to update contact");
+        return;
+    }
+    else {
         emit FileEroor("Failed to open data");
         return;
     }

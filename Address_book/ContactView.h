@@ -25,6 +25,7 @@ public Q_SLOTS:
 	void onContactAdded(const QVariant& new_contact_) const;
 	void onContactsAdded(const QVariantList& contacts_list_) const;
 	void onContactDeleted(const QVariant& contact_delete_) const;
+	void onContactUpdated(const QVariant& updated_contact_);
 	void onRowsInserted(const QModelIndex& parent, int first, int last);
 
 Q_SIGNALS:

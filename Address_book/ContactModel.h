@@ -48,6 +48,8 @@ public:
 
 	void deleteContact(const QVariant& delete_contact_);
 
+	void updateContact(const QVariant& update_contact_);
+
 private Q_SLOTS:
 	void clear();
 
