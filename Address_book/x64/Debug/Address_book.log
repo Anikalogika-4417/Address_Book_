@@ -1,2 +1,7 @@
-﻿  address_book.cpp
+﻿  moc address_book.h
+  address_book.cpp
+  main.cpp
+  moc_ContactModel.cpp
+  moc_address_book.cpp
+  LINK : D:\Programming\ForGit\Address_Book_\x64\Debug\Address_book.exe not found or not built by the last incremental link; performing full link
   Address_book.vcxproj -> D:\Programming\ForGit\Address_Book_\x64\Debug\Address_book.exe

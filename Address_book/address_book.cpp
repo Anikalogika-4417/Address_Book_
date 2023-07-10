@@ -58,10 +58,19 @@ void Address_book::onAddButtonCliecked()
 
 void Address_book::onSaveEditButtonClicked()
 {
+    QRegularExpression regex("^\\d{10}$");
+    QRegularExpressionMatch match = regex.match(ui->phone_edit->text());
+
+    if (!match.hasMatch()) {
+        QMessageBox::warning(this, "Warning", "Phone number incorrect\nFormat: 0123456789");
+        return;
+    }
+
     if (ui->name_edit->text().isEmpty() || ui->phone_edit->text().isEmpty()) {
         QMessageBox::warning(this, "Warning", "Please, fill filds name and phone");
         return;
     }
+
 
     if (ui->info_edit_save_button->text() == SAVE_BUTTON)
     {
