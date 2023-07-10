@@ -39,12 +39,16 @@ private Q_SLOTS:
     void ContactsAdded(const contactListPtr all_contacts_);
     void ContactDeleteded(const QString& mess_);
 
+    void ContactUpdated(const contactItemPtr new_contact_);
+
 Q_SIGNALS:
     void newContact(const contactItemPtr new_contact_);
+    void updateContact(const contactItemPtr new_contact_);
     void deleteLine(const contactItemPtr delete_item_);
     void showContact(const QVariant& var_);
     void showContacts(const QVariantList& var_list_);
     void delViewContact(const QVariant& var_del_);
+    void showUpdContact(const QVariant& var_);
 
 
 private:

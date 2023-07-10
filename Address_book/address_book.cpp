@@ -15,6 +15,8 @@ Address_book::Address_book(QWidget *parent)
     connect(this, &Address_book::showContact, ui->contacts_listView, &ContactView::onContactAdded);
     connect(this, &Address_book::showContacts, ui->contacts_listView, &ContactView::onContactsAdded);
     connect(this, &Address_book::delViewContact, ui->contacts_listView, &ContactView::onContactDeleted);
+    connect(this, &Address_book::showUpdContact, ui->contacts_listView, &ContactView::onContactUpdated);
+
     connect(ui->contacts_listView, &ContactView::contactClicked, this, &Address_book::onContactClicked);
 
     //connections wuth button clicked
@@ -24,12 +26,14 @@ Address_book::Address_book(QWidget *parent)
 
     //connections with helper
     connect(this, &Address_book::newContact, helper.data(), &Helper::AddLine);
+    connect(this, &Address_book::updateContact, helper.data(), &Helper::UpdateLine);
     connect(this, &Address_book::deleteLine, helper.data(), &Helper::DeleteLine);
 
     connect(helper.data(), &Helper::FileEroor, this, &Address_book::ContactAddedError);
     connect(helper.data(), &Helper::ContactAdded, this, &Address_book::ContactAdded);
     connect(helper.data(), &Helper::LinesUploaded, this, &Address_book::ContactsAdded);
     connect(helper.data(), &Helper::LineDeleted, this, &Address_book::ContactDeleteded);
+    connect(helper.data(), &Helper::LineUpdated, this, &Address_book::ContactUpdated);
 
     Helper::instance()->DownloadLines();
 }
@@ -54,13 +58,13 @@ void Address_book::onAddButtonCliecked()
 
 void Address_book::onSaveEditButtonClicked()
 {
+    if (ui->name_edit->text().isEmpty() || ui->phone_edit->text().isEmpty()) {
+        QMessageBox::warning(this, "Warning", "Please, fill filds name and phone");
+        return;
+    }
+
     if (ui->info_edit_save_button->text() == SAVE_BUTTON)
     {
-        if (ui->name_edit->text().isEmpty() || ui->phone_edit->text().isEmpty()) {
-            QMessageBox::warning(this, "Warning", "Please, fill filds name and phone");
-            return;
-        }
-
         emit newContact(contactItemPtr
             { new ContactItem
                 {
@@ -72,14 +76,21 @@ void Address_book::onSaveEditButtonClicked()
             }
         );
         ui->info_delete_button->setEnabled(true);
-
     }
     else 
     {
-
+        emit updateContact(contactItemPtr
+            { new ContactItem
+                {
+                current_contact->getContactId(),
+                ui->name_edit->text(),
+                ui->nickname_edit->text(),
+                ui->phone_edit->text(),
+                ui->work_edit->text()
+                }
+            }
+        );
     }
-
-    
 }
 
 void Address_book::onDeleteButtonClicked()
@@ -138,6 +149,13 @@ void Address_book::ContactDeleteded(const QString& mess_) {
     emit delViewContact(QVariant::fromValue<contactItemPtr>(current_contact));
     ui->info_widget->hide();
     QMessageBox::information(this, "Success", mess_);
+}
+
+void Address_book::ContactUpdated(const contactItemPtr updated_contact_) 
+{
+    current_contact = updated_contact_;
+    emit showUpdContact(QVariant::fromValue<contactItemPtr>(updated_contact_));
+    QMessageBox::information(this, "Success", "Contact updated successfully!");
 }
 
 

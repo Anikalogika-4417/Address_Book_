@@ -49,6 +49,8 @@ static constexpr auto qt_meta_stringdata_CLASSContactViewENDCLASS = QtMocHelpers
     "contacts_list_",
     "onContactDeleted",
     "contact_delete_",
+    "onContactUpdated",
+    "updated_contact_",
     "onRowsInserted",
     "QModelIndex",
     "parent",
@@ -57,7 +59,7 @@ static constexpr auto qt_meta_stringdata_CLASSContactViewENDCLASS = QtMocHelpers
 );
 #else  // !QT_MOC_HAS_STRING_DATA
 struct qt_meta_stringdata_CLASSContactViewENDCLASS_t {
-    uint offsetsAndSizes[32];
+    uint offsetsAndSizes[36];
     char stringdata0[12];
     char stringdata1[15];
     char stringdata2[1];
@@ -69,11 +71,13 @@ struct qt_meta_stringdata_CLASSContactViewENDCLASS_t {
     char stringdata8[15];
     char stringdata9[17];
     char stringdata10[16];
-    char stringdata11[15];
-    char stringdata12[12];
-    char stringdata13[7];
-    char stringdata14[6];
-    char stringdata15[5];
+    char stringdata11[17];
+    char stringdata12[17];
+    char stringdata13[15];
+    char stringdata14[12];
+    char stringdata15[7];
+    char stringdata16[6];
+    char stringdata17[5];
 };
 #define QT_MOC_LITERAL(ofs, len) \
     uint(sizeof(qt_meta_stringdata_CLASSContactViewENDCLASS_t::offsetsAndSizes) + ofs), len 
@@ -90,11 +94,13 @@ Q_CONSTINIT static const qt_meta_stringdata_CLASSContactViewENDCLASS_t qt_meta_s
         QT_MOC_LITERAL(105, 14),  // "contacts_list_"
         QT_MOC_LITERAL(120, 16),  // "onContactDeleted"
         QT_MOC_LITERAL(137, 15),  // "contact_delete_"
-        QT_MOC_LITERAL(153, 14),  // "onRowsInserted"
-        QT_MOC_LITERAL(168, 11),  // "QModelIndex"
-        QT_MOC_LITERAL(180, 6),  // "parent"
-        QT_MOC_LITERAL(187, 5),  // "first"
-        QT_MOC_LITERAL(193, 4)   // "last"
+        QT_MOC_LITERAL(153, 16),  // "onContactUpdated"
+        QT_MOC_LITERAL(170, 16),  // "updated_contact_"
+        QT_MOC_LITERAL(187, 14),  // "onRowsInserted"
+        QT_MOC_LITERAL(202, 11),  // "QModelIndex"
+        QT_MOC_LITERAL(214, 6),  // "parent"
+        QT_MOC_LITERAL(221, 5),  // "first"
+        QT_MOC_LITERAL(227, 4)   // "last"
     },
     "ContactView",
     "contactClicked",
@@ -107,6 +113,8 @@ Q_CONSTINIT static const qt_meta_stringdata_CLASSContactViewENDCLASS_t qt_meta_s
     "contacts_list_",
     "onContactDeleted",
     "contact_delete_",
+    "onContactUpdated",
+    "updated_contact_",
     "onRowsInserted",
     "QModelIndex",
     "parent",
@@ -123,7 +131,7 @@ Q_CONSTINIT static const uint qt_meta_data_CLASSContactViewENDCLASS[] = {
       11,       // revision
        0,       // classname
        0,    0, // classinfo
-       5,   14, // methods
+       6,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -131,13 +139,14 @@ Q_CONSTINIT static const uint qt_meta_data_CLASSContactViewENDCLASS[] = {
        1,       // signalCount
 
  // signals: name, argc, parameters, tag, flags, initial metatype offsets
-       1,    1,   44,    2, 0x06,    1 /* Public */,
+       1,    1,   50,    2, 0x06,    1 /* Public */,
 
  // slots: name, argc, parameters, tag, flags, initial metatype offsets
-       5,    1,   47,    2, 0x10a,    3 /* Public | MethodIsConst  */,
-       7,    1,   50,    2, 0x10a,    5 /* Public | MethodIsConst  */,
-       9,    1,   53,    2, 0x10a,    7 /* Public | MethodIsConst  */,
-      11,    3,   56,    2, 0x0a,    9 /* Public */,
+       5,    1,   53,    2, 0x10a,    3 /* Public | MethodIsConst  */,
+       7,    1,   56,    2, 0x10a,    5 /* Public | MethodIsConst  */,
+       9,    1,   59,    2, 0x10a,    7 /* Public | MethodIsConst  */,
+      11,    1,   62,    2, 0x0a,    9 /* Public */,
+      13,    3,   65,    2, 0x0a,   11 /* Public */,
 
  // signals: parameters
     QMetaType::Void, 0x80000000 | 3,    4,
@@ -146,7 +155,8 @@ Q_CONSTINIT static const uint qt_meta_data_CLASSContactViewENDCLASS[] = {
     QMetaType::Void, QMetaType::QVariant,    6,
     QMetaType::Void, QMetaType::QVariantList,    8,
     QMetaType::Void, QMetaType::QVariant,   10,
-    QMetaType::Void, 0x80000000 | 12, QMetaType::Int, QMetaType::Int,   13,   14,   15,
+    QMetaType::Void, QMetaType::QVariant,   12,
+    QMetaType::Void, 0x80000000 | 14, QMetaType::Int, QMetaType::Int,   15,   16,   17,
 
        0        // eod
 };
@@ -172,6 +182,9 @@ Q_CONSTINIT const QMetaObject ContactView::staticMetaObject = { {
         // method 'onContactDeleted'
         QtPrivate::TypeAndForceComplete<void, std::false_type>,
         QtPrivate::TypeAndForceComplete<const QVariant &, std::false_type>,
+        // method 'onContactUpdated'
+        QtPrivate::TypeAndForceComplete<void, std::false_type>,
+        QtPrivate::TypeAndForceComplete<const QVariant &, std::false_type>,
         // method 'onRowsInserted'
         QtPrivate::TypeAndForceComplete<void, std::false_type>,
         QtPrivate::TypeAndForceComplete<const QModelIndex &, std::false_type>,
@@ -191,7 +204,8 @@ void ContactView::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id,
         case 1: _t->onContactAdded((*reinterpret_cast< std::add_pointer_t<QVariant>>(_a[1]))); break;
         case 2: _t->onContactsAdded((*reinterpret_cast< std::add_pointer_t<QVariantList>>(_a[1]))); break;
         case 3: _t->onContactDeleted((*reinterpret_cast< std::add_pointer_t<QVariant>>(_a[1]))); break;
-        case 4: _t->onRowsInserted((*reinterpret_cast< std::add_pointer_t<QModelIndex>>(_a[1])),(*reinterpret_cast< std::add_pointer_t<int>>(_a[2])),(*reinterpret_cast< std::add_pointer_t<int>>(_a[3]))); break;
+        case 4: _t->onContactUpdated((*reinterpret_cast< std::add_pointer_t<QVariant>>(_a[1]))); break;
+        case 5: _t->onRowsInserted((*reinterpret_cast< std::add_pointer_t<QModelIndex>>(_a[1])),(*reinterpret_cast< std::add_pointer_t<int>>(_a[2])),(*reinterpret_cast< std::add_pointer_t<int>>(_a[3]))); break;
         default: ;
         }
     } else if (_c == QMetaObject::IndexOfMethod) {
@@ -225,13 +239,13 @@ int ContactView::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 5)
+        if (_id < 6)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 5;
+        _id -= 6;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 5)
+        if (_id < 6)
             *reinterpret_cast<QMetaType *>(_a[0]) = QMetaType();
-        _id -= 5;
+        _id -= 6;
     }
     return _id;
 }

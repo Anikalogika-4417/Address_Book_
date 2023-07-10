@@ -91,3 +91,18 @@ void ContactModel::deleteContact(const QVariant& delete_contact_)
         endInsertRows();
     }
 }
+
+void ContactModel::updateContact(const QVariant& update_contact_)
+{
+    if (const auto contact = update_contact_.value<contactItemPtr>(); contact)
+    {
+        beginInsertRows(QModelIndex(), static_cast<int>(model_contacts.size()), static_cast<int>(model_contacts.size()));
+        for (auto model : model_contacts) {
+            if (model->getContactId() == contact->getContactId()) {
+                model_contacts.replace(model_contacts.indexOf(model), contact);
+                break;
+            }
+        }
+        endInsertRows();
+    }
+}
