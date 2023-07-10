@@ -3,6 +3,8 @@
 #include <QtWidgets/QMainWindow>
 #include <QObject>
 #include <QMessageBox>
+#include <QRegularExpression>
+#include <QRegularExpressionMatch>
 
 #include "ui_address_book.h"
 #include "ContactItem.h"
